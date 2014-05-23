@@ -1,0 +1,49 @@
+﻿@model List<Html5OfflineMvc4.Models.Person>
+<html lang="en" manifest="@Url.Action("Index", "Offline")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #status {
+            background: #feffb1;
+            border: 1px solid #e6e837;
+            -moz-border-radius: .25em;
+            -webkit-border-radius: .25em;
+            border-radius: .25em;
+            display: none;
+            font-size: .75em;
+            font-weight: bold;
+            margin: 1em 0;
+            padding: 1em;
+        }
+    </style>
+    @Styles.Render("~/bundles/bootstrapcss")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <section>
+        <div id="onlineStatus"></div>
+
+        <div id="status"></div>
+        @*  <a href="/Content/CI.pdf">Download</a>
+        @Html.ActionLink("Download", "Download")*@
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <address>
+                    <strong>@item.Name</strong><br>
+                    795 Folsom Ave, Suite 600<br>
+                    San Francisco, CA 94107<br>
+                    <abbr title="Phone">P:</abbr>
+                    @item.PhoneNumber
+                </address>                
+            }
+        </div>
+    </section>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/offline")
+    @Scripts.Render("~/bundles/bootstrapjs")
+
+</body>
+</html>
